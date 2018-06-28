@@ -11,6 +11,8 @@ Things you may want to cover:
 
 * Configuration
 
+`cp .env.example .env && vim .env`
+
 * Database creation
 
 * Database initialization
