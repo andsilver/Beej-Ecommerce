@@ -1,0 +1,214 @@
+/* Component Start */
+.input {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	margin: 1em;
+	max-width: 100%;
+	width: calc(100% - 2em);
+	vertical-align: top;
+}
+
+.input__field {
+	position: relative;
+	display: block;
+	float: right;
+	width: 60%;
+	border: none;
+	border-radius: 0;
+	background: #f0f0f0;
+	color: #aaa;
+	font-weight: bold;
+	-webkit-appearance: none; /* for box shadows to show on iOS */
+}
+
+.input__field:focus {
+	outline: none;
+}
+
+.input__label {
+	display: inline-block;
+	float: right;
+	width: 40%;
+	height: 47px;
+	line-height: 47px;
+	font-size:16px;
+	color: #a6aaae;
+	font-weight: bold;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	margin: 0;
+	transition: 0.3s;
+}
+
+.input__label-content {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+
+.graphic {
+	position: absolute;
+	top: 0;
+	left: 0;
+	fill: none;
+}
+
+.icon {
+	color: #ddd;
+	font-size: 150%;
+}
+
+/* Individual styles */
+
+/* Haruki */
+
+.input_bejeeb {
+	margin: 10px 0px 0px;
+}
+
+.input__field_bejeeb {
+	padding: 0.4em 0.25em;
+	width: 100%;
+	background: transparent;
+	color: #396179;
+	font-size: 15px;
+	height: 47px;
+}
+
+.input__label_bejeeb {
+	position: absolute;
+	width: 100%;
+	text-align: left;
+	pointer-events: none;
+}
+
+.input__label-content_bejeeb {
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+}
+.input__label_bejeeb::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	height: 1px;
+	background: #a6aaae;
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	bottom: 0;
+}
+
+.input__label_bejeeb::after {
+	bottom: 0;
+}
+
+.input__field_bejeeb:focus + .input__label_bejeeb .input__label-content_bejeeb,
+.input--filled .input__label-content_bejeeb {
+	-webkit-transform: translate3d(0, -40%, 0);
+	transform: translate3d(0, -40%, 0);
+	font-size: 10px;
+	transition: 0.3s;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* The checkout_checkbox */
+
+.checkout_checkbox {
+    display: block;
+    position: relative;
+    padding-left: 92px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	min-height: 52px;
+}
+.checkout_checkbox h5{
+    font-size: 14px;
+    color: #223752;
+    font-weight: 600;
+	line-height: 20px;
+	padding-top: 5px;
+}
+.checkout_pic{
+	position: absolute;
+	top: 0px;
+	left: 32px;
+}
+/* Hide the browser's default radio button */
+.checkout_checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: none;
+    border-radius: 50%;
+	border: 2px solid #39a4f7;
+}
+
+
+/* When the radio button is checked, add a blue background */
+.checkout_checkbox input:checked ~ .checkmark {
+    background-color: #fff;
+	border: 2px solid #39a4f7;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.checkout_checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.checkout_checkbox .checkmark:after {
+ 	top: 2px;
+	left: 2px;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: #259af6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
