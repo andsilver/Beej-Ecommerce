@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: redirect('/')
+  root to: 'statics#index'
+  get 'index.html', to: redirect('/') # Fix links and remove this line
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'login-signup.html', to: 'users#new', as: :login
+  resources :users, only: [:create]
 end

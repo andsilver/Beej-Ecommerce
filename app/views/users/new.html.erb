@@ -1,0 +1,130 @@
+<% content_for :css do %>
+  <link href="css/form.css" rel="stylesheet">
+<% end %>
+<section class="signup_login_area">
+  <div class="signup_login_area_main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="looin_item">
+            <div class="login_area_headding">
+              <h2>LOG IN</h2>
+            </div>
+            <div class="facebook_button">
+              <%= link_to user_facebook_omniauth_authorize_path do %>
+                <img src="images/fb_button.png" alt="facebook"/>
+              <% end %>
+            </div>
+            <div class="login_form_area">
+              <p>
+              or login with email
+              </p>
+              <%= form_for User.new, url: user_session_path do |form| %>
+                <div class="input input_bejeeb">
+                  <%= form.email_field :email, id: 'input-1', class: 'input__field input__field_bejeeb' %>
+                  <label class="input__label input__label_bejeeb" for="input-1">
+                    <span class="input__label-content input__label-content_bejeeb">Email</span>
+                  </label>
+                </div>
+                <div class="input input_bejeeb">
+                  <%= form.password_field :password, class: 'input__field input__field_bejeeb', id: 'input-2' %>
+                  <label class="input__label input__label_bejeeb" for="input-2">
+                    <span class="input__label-content input__label-content_bejeeb">Password</span>
+                  </label>
+                </div>
+                <div class="login_form_btn">
+                  <button type="submit">LOG IN</button>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="signup_item">
+            <div class="signup_area_headding">
+              <h2>SIGN UP</h2>
+            </div>
+            <div class="signup_uper_txt">
+              <p>
+              SIGNUP NOW AND GET THE BENEFITS OF SHOPPING WORDWIDE STORES WITH THE LOWEST SHIPPING RATES  <br/>
+
+              </p>
+            </div>
+            <div class="signup_form_area">
+              <%= form_for @user do |f| %>
+                <div class="input input_bejeeb">
+                  <%= f.text_field :name, class: 'input__field input__field_bejeeb', id: 'input-3' %>
+                  <label class="input__label input__label_bejeeb" for="input-3">
+                    <span class="input__label-content input__label-content_bejeeb">First and last name</span>
+                  </label>
+                </div>
+                <div class="input input_bejeeb">
+                  <%= f.email_field :email, class: 'input__field input__field_bejeeb', id: 'input-4' %>
+                  <label class="input__label input__label_bejeeb" for="input-4">
+                    <span class="input__label-content input__label-content_bejeeb">Email</span>
+                  </label>
+                </div>
+                <div class="input input_bejeeb">
+                  <%= f.password_field :password, class: 'input__field input__field_bejeeb', id: 'input-5' %>
+                  <label class="input__label input__label_bejeeb" for="input-5">
+                    <span class="input__label-content input__label-content_bejeeb">Password</span>
+                  </label>
+                </div>
+                <div class="signup_bottom_txt">
+                  <p>
+                  By clicking on «Sign Up», you agree to
+                  <a href="terms.html">Terms Of Service</a> and <a href="privacy.html">Privacy Policy</a>
+                  </p>
+                </div>
+                <div class="signup_form_btn">
+                  <button type="submit">SIGN UP</button>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--login_featured area Start -->
+
+<section class="login_featured_area">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="login_featured_item">
+          <div class="login_featured_item_pic">
+            <img src="images/img-9.png" alt="img"/>
+          </div>
+          <p>
+          Use Beejeeb to shop anything , anywhere.
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="login_featured_item login_featured_item2">
+          <div class="login_featured_item_pic">
+            <img src="images/img-10.png" alt="img"/>
+          </div>
+          <p>
+          Pay your order <br/>
+          with cash or using a credit card.
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="login_featured_item">
+          <div class="login_featured_item_pic">
+            <img src="images/img-11.png" alt="img"/>
+          </div>
+          <p>
+          Get your items delivered <br/>
+          straight to where you are!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
