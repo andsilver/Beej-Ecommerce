@@ -65,6 +65,9 @@
               <li><a href="#">العربية</a></li>
               <% if current_user %>
                 <li>
+                  <a href="#"> Hello, <%= current_user.name %></a>
+                </li>
+                <li>
                   <%= button_to 'Sign out', destroy_user_session_path, class: 'signin_btn', method: :delete %>
                 </li>
               <% else %>
