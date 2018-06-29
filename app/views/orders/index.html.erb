@@ -1,0 +1,62 @@
+<section class="order_page_area">
+  <div class="container">
+    <div class="page_headding">
+      <h1>MY ORDERS</h1>
+    </div>
+    <div class="order_area">
+      <table border="0" cellspacing="0" cellpadding="0" align="center">
+        <tr class="order_table_header">
+          <td>
+            Order Id 
+          </td>
+          <td>
+            Date & Time
+          </td>
+          <td>
+            Total
+          </td>
+          <td>
+            Status
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <% @orders.each do |order| %>
+
+        <tr class="order_table_list">
+          <td class="order_id">
+            <a href="#"># <%= order.id %></a>
+          </td>
+          <td class="order_d_time">
+            <%= order.created_at.strftime('%d %B at %l:%M %p') %>
+          </td>
+          <td class="order_total">
+            <% if order.total_price %>
+              <%= number_to_currency(order.total_price) %> (JOD ??)
+            <% end %>
+          </td>
+          <% status_classes = { delivered: 'order_st_compleate', cancelled: 'order_st_cancelled', pending: 'order_st_process' } %>
+          <td class="<%= status_classes.fetch(order.status) %>">
+            <a href="#">
+              <% if order.status == :delivered %>
+                <i><img src="images/icons/check_o_icon.png" alt="icon"/></i> Delivered
+              <% elsif order.status == :cancelled %>
+                <i><img src="images/icons/cancle_icon.png" alt="icon"/></i> Cancelled
+              <% elsif order.status == :pending %>
+                <i><img src="images/icons/process_icon.png" alt="icon"/></i> Waiting confirmation
+              <% end %>
+            </a>
+          </td>
+          <td class="order_details">
+            <%= button_to order, method: :get do %>
+              Check Details
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</section>
+

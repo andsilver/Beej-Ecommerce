@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[facebook]
 
   has_many :cart_items
+  has_many :orders
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true

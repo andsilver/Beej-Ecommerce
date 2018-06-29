@@ -10,9 +10,9 @@ class ProductFetcher
       result = JSON.parse(body)
       data = result.fetch('data')
       puts data.inspect
-      name = data.fetch('title')
+      title = data.fetch('title')
       image_url = data.fetch('mainImage')
-      product = Product.new(name: name, image_url: image_url)
+      product = Product.new(title: title, image_url: image_url)
     rescue StandardError
       raise NotFound
     end

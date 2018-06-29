@@ -1,10 +1,20 @@
 # frozen_string_literal: true
 
-class CartItemsController < ApplicationController
-  before_action :authenticate_user!
-
+class CartItemsController < AuthenticatedController
   def index
     @cart_items = cart_items
+  end
+
+  # send to review
+  def checkout
+    items = cart_items.all
+    redirect_to :cart_items and return unless items.count.positive?
+
+    Order.transaction do
+      Order.create_from_cart_items!(items: items, user: current_user)
+      items.each(&:destroy)
+    end
+    redirect_to :orders, notice: 'Order created'
   end
 
   def create

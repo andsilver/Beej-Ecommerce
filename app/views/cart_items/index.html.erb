@@ -73,10 +73,13 @@
     </div>
 
 
-    <div class="checkout1_btn">
-      <button type="button">send to review </button>
-    </div>
-
+    <% if @cart_items.count.positive? %>
+      <div class="checkout1_btn">
+        <%= button_to checkout_cart_items_path do %>
+          send to review
+        <% end %>
+      </div>
+    <% end %>
 
   </div>
 </section>

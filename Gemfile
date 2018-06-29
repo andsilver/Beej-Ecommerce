@@ -9,6 +9,7 @@ gem 'devise'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'httparty'
 gem 'jbuilder', '~> 2.5'
+gem 'money-rails', '~>1'
 gem 'omniauth-facebook'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
