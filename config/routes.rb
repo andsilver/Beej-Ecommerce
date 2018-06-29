@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get 'login-signup.html', to: 'users#new', as: :login
   resources :users, only: [:create]
   resource :cart
+  get 'fetch-product', to: 'products#fetch'
 end

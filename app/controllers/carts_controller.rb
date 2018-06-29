@@ -4,6 +4,6 @@ class CartsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-#    raise current_user.inspect
+    #    raise current_user.inspect
   end
 end

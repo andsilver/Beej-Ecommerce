@@ -26,8 +26,8 @@
               </div>
               <form>
                 <div class="hero_form_controll">
-                  <input type="text" placeholder="Paste item URL(e.g.https://www.amazon.com/gp/product/B072BQXQJ1)"/>
-                  <button type="button" data-toggle="modal" data-target="#product_modal">SHOP NOW</button>
+                  <input type="text" id="url_to_fetch" placeholder="Paste item URL(e.g.https://www.amazon.com/gp/product/B072BQXQJ1)"/>
+                  <button type="button" data-toggle="modal" data-product-fetcher="true" data-target="#product_modal">SHOP NOW</button>
                 </div>
               </form>
             </div>
@@ -306,4 +306,3 @@
 </section>
 
 <%= render('shared/product_modal') %>
-
