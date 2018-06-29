@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   get 'login-signup.html', to: 'users#new', as: :login
   resources :users, only: [:create]
-  resource :cart
+  resources :cart_items, only: %i[index create update destroy]
   get 'fetch-product', to: 'products#fetch'
 end
