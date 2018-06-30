@@ -27,6 +27,14 @@ class Order < ApplicationRecord
   def total_price
   end
 
+  def number
+    id
+  end
+
+  def client_name
+    user.name
+  end
+
   def status
     :pending
   end
