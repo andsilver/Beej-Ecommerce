@@ -67,6 +67,11 @@
                   <a href="#"> Hello, <%= current_user.name %></a>
                 </li>
                 <li>
+                  <%= link_to orders_path do %>
+                    <img src="/images/icons/list.png" width="17px" height="17px" alt="My Orders"/>
+                  <% end %>
+                </li>
+                <li>
                   <%= link_to cart_items_path do %>
                     <img src="/images/icons/cart_icon.png" alt="img"/>
                   <% end %>
@@ -79,7 +84,9 @@
                   <% end %>
                 </li>
                 <li>
-                  <%= button_to 'Sign out', destroy_user_session_path, class: 'signin_btn', method: :delete %>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <img src="/images/icons/logout.png" width="22px" alt="img"/>
+                  <% end %>
                 </li>
               <% else %>
                 <li><button class="signin_btn" type="button" onclick="window.location.href='login-signup.html'">Sign in</button></li>
