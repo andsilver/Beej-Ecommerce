@@ -21,11 +21,10 @@ class Order < ApplicationRecord
       )
     end
 
-    order = Order.create!(user: user, order_items: order_items)
+    Order.create!(user: user, order_items: order_items)
   end
 
-  def total_price
-  end
+  def total_price; end
 
   def number
     id

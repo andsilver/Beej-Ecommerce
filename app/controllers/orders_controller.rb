@@ -6,6 +6,6 @@ class OrdersController < AuthenticatedController
   end
 
   def show
-#    @order = Order.where(user: current_user).find(params[:id])
+    #    @order = Order.where(user: current_user).find(params[:id])
   end
 end

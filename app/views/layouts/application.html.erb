@@ -62,10 +62,21 @@
                 </ul>
               </li>
               <li class="faq_nav"><a href="faq.html"><img src="/images/icons/8.png" alt="img"/></a></li>
-              <li><a href="#">العربية</a></li>
               <% if current_user %>
                 <li>
                   <a href="#"> Hello, <%= current_user.name %></a>
+                </li>
+                <li>
+                  <%= link_to cart_items_path do %>
+                    <img src="/images/icons/cart_icon.png" alt="img"/>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to '#' do %>
+                    <div class="avatar-wrapper" style="border-radius: 100px;overflow: hidden;width:30px;height:30px;border: #ABABAB solid 1px;">
+                      <img src="<%= avatar_url(current_user) %>" width="30px" alt="img"/>
+                    </div>
+                  <% end %>
                 </li>
                 <li>
                   <%= button_to 'Sign out', destroy_user_session_path, class: 'signin_btn', method: :delete %>
@@ -73,12 +84,12 @@
               <% else %>
                 <li><button class="signin_btn" type="button" onclick="window.location.href='login-signup.html'">Sign in</button></li>
                 <li><button class="c_account_btn" type="button" onclick="window.location.href='login-signup.html'">Create account</button></li>
-              <% end %>
               <li>
                 <%= link_to cart_items_path do %>
                   <img src="/images/icons/cart_icon.png" alt="img"/>
                 <% end %>
               </li>
+              <% end %>
             </ul>
           </div>
         </div>

@@ -8,7 +8,7 @@ class CartItemsController < AuthenticatedController
   # send to review
   def checkout
     items = cart_items.all
-    redirect_to :cart_items and return unless items.count.positive?
+    redirect_to(:cart_items) && return unless items.count.positive?
 
     Order.transaction do
       Order.create_from_cart_items!(items: items, user: current_user)
@@ -34,6 +34,7 @@ class CartItemsController < AuthenticatedController
   end
 
   private
+
   def cart_items
     current_user.cart_items
   end

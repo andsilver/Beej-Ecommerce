@@ -12,3 +12,18 @@ Metrics/LineLength:
 
 Style/ClassAndModuleChildren:
   Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Lint/HandleExceptions:
+  Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: false
