@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create]
   resources :cart_items, only: %i[index create update destroy] do
     post :checkout, on: :collection
+    get :thank_you, on: :collection
   end
   get 'fetch-product', to: 'products#fetch'
 

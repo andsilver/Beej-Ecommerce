@@ -5,16 +5,29 @@ class CartItemsController < AuthenticatedController
     @cart_items = cart_items
   end
 
+  def thank_you
+    @order_number = flash[:order_number]
+    @order_id = flash[:order_id]
+    redirect_to root_path unless @order_number && @order_id
+  end
+
   # send to review
   def checkout
     items = cart_items.all
     redirect_to(:cart_items) && return unless items.count.positive?
 
+    order_number = nil
+    order_id = nil
+
     Order.transaction do
-      Order.create_from_cart_items!(items: items, user: current_user)
+      order = Order.create_from_cart_items!(items: items, user: current_user)
+      order_number = order.number
+      order_id = order.id
       items.each(&:destroy)
     end
-    redirect_to :orders, notice: 'Order created'
+    flash[:order_number] = order_number
+    flash[:order_id] = order_id
+    redirect_to [:thank_you, :cart_items]
   end
 
   def create
