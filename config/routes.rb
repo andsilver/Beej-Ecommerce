@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   get 'faq.html', to: 'statics#faq'
   get 'how-it-works.html', to: 'statics#how_it_works'
+  get 'terms', to: 'statics#terms'
   get 'privacy.html', to: 'statics#privacy'
   get 'login-signup.html', to: 'users#new', as: :login
   resources :users, only: [:create]
