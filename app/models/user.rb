@@ -37,4 +37,8 @@ class User < ApplicationRecord
   rescue StandardError
     # Simply don't break
   end
+
+  def wallet_balance
+    0
+  end
 end

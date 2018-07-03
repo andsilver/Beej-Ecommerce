@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     post :checkout, on: :collection
     get :thank_you, on: :collection
   end
+  resource :profile, only: %i[show update]
+
   get 'fetch-product', to: 'products#fetch'
 
   resources :orders
