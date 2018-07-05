@@ -42,7 +42,7 @@
                     <img src="images/icons/left_arrow_o.png" alt="img"/>
                   </button>
                 </span>
-                <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+                <input type="text" class="quantity" id="quantity" name="quantity" class="form-control input-number" value="<%= cart_item.quantity %>" min="1" max="100">
                 <span class="input-group-btn">
                   <button type="button" class="quantity-right-plus btn btn-number" data-type="plus" data-field="">
                     <img src="images/icons/right_arrow_o.png" alt="img"/>
@@ -51,7 +51,11 @@
               </div>
             </td>
             <td class="checkout_description">
-              no description
+              <% if cart_item.instructions %>
+                <%= cart_item.instructions %>
+              <% else %>
+                no description
+              <% end %>
             </td>
             <td class="checkout_edit">
               <ul>

@@ -53,6 +53,13 @@ class CartItemsController < AuthenticatedController
   end
 
   def cart_item_params
-    params.require(:cart_item).permit(:quantity, :title, :description, :image_url, :supplier_url)
+    params.require(:cart_item).permit(
+      :quantity,
+      :title,
+      :description,
+      :instructions,
+      :image_url,
+      :supplier_url
+    )
   end
 end

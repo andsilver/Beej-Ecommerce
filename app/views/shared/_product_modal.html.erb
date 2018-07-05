@@ -2,48 +2,55 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <%= form_for @cart_item || CartItem.new do |cf| %>
-          <div class="home_modal2">
-            <div class="modal2_row">
-              <div class="modal2_coll_left">
-                <img id="modal_product_image" src="images/img-22.png" alt="img"/>
-              </div>
-              <div class="modal2_coll_right">
-                <div class="product_modal_content">
-                  <h4 id="modal_product_title">Aviator Classic</h4>
-                  <%= cf.hidden_field :title %>
-                  <%= cf.hidden_field :image_url %>
-                  <%= cf.hidden_field :supplier_url %>
-                  <%= cf.hidden_field :description %>
-                  <p id="modal_product_description">Product Description</p>
-                  <%= cf.text_area :instructions, rows: 3, class: 'form-control', placeholder: 'Tell us about your item , size or color or any instructions regarding this item' %>
+        <div id="modal_spinner">
+          <center>
+            <img src="/images/loading.gif" />
+          </center>
+        </div>
+        <div id="modal_results" style="display:none">
+          <%= form_for @cart_item || CartItem.new do |cf| %>
+            <div class="home_modal2">
+              <div class="modal2_row">
+                <div class="modal2_coll_left">
+                  <img id="modal_product_image" src="images/img-22.png" alt="img"/>
                 </div>
-                <div class="product_modal_footer">
-                  <div class="product_quantity">
-                    <p>Quantity</p>
-                    <div class="input-group">
-                      <span class="input-group-btn">
-                        <button type="button" class="p_quantity-left-minus btn btn-number"  data-type="minus" data-field="">
-                          <img src="images/icons/left_arrow_o.png" alt="img"/>
-                        </button>
-                      </span>
-                      <%= cf.text_field :quantity, id: 'p_quantity', class: 'form-control input-number', min: 1, max: 100, value: cf.object.quantity || 1 %>
-                      <span class="input-group-btn">
-                        <button type="button" class="p_quantity-right-plus btn btn-number" data-type="plus" data-field="">
-                          <img src="images/icons/right_arrow_o.png" alt="img"/>
-                        </button>
-                      </span>
-                    </div>
+                <div class="modal2_coll_right">
+                  <div class="product_modal_content">
+                    <h4 id="modal_product_title">Aviator Classic</h4>
+                    <%= cf.hidden_field :title %>
+                    <%= cf.hidden_field :image_url %>
+                    <%= cf.hidden_field :supplier_url %>
+                    <%= cf.hidden_field :description %>
+                    <p id="modal_product_description">Product Description</p>
+                    <%= cf.text_area :instructions, rows: 3, class: 'form-control', placeholder: 'Tell us about your item , size or color or any instructions regarding this item' %>
                   </div>
-                  <button type="submit" class="product_modal_add_btn">add to cart</button>
+                  <div class="product_modal_footer">
+                    <div class="product_quantity">
+                      <p>Quantity</p>
+                      <div class="input-group">
+                        <span class="input-group-btn">
+                          <button type="button" class="p_quantity-left-minus btn btn-number"  data-type="minus" data-field="">
+                            <img src="images/icons/left_arrow_o.png" alt="img"/>
+                          </button>
+                        </span>
+                        <%= cf.text_field :quantity, id: 'p_quantity', class: 'form-control input-number', min: 1, max: 100, value: cf.object.quantity || 1 %>
+                        <span class="input-group-btn">
+                          <button type="button" class="p_quantity-right-plus btn btn-number" data-type="plus" data-field="">
+                            <img src="images/icons/right_arrow_o.png" alt="img"/>
+                          </button>
+                        </span>
+                      </div>
+                    </div>
+                    <button type="submit" class="product_modal_add_btn">add to cart</button>
+                  </div>
                 </div>
               </div>
+              <div class="home_modal2_close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
             </div>
-            <div class="home_modal2_close">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
