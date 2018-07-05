@@ -53,14 +53,16 @@
               <li><a href="/#calculator"><img src="/images/icons/7.png" alt="img"/>Calculator</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown flag_nav">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="/images/flag/1.png" alt="img"/> <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#"><img src="/images/flag/1.png" alt="img"/></a></li>
-                  <li><a href="#"><img src="/images/flag/2.png" alt="img"/></a></li>
-                  <li><a href="#"><img src="/images/flag/3.png" alt="img"/></a></li>
-                </ul>
-              </li>
+              <% unless current_user %>
+                <li class="dropdown flag_nav">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="/images/flag/1.png" alt="img"/> <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#"><img src="/images/flag/1.png" alt="img"/></a></li>
+                    <li><a href="#"><img src="/images/flag/2.png" alt="img"/></a></li>
+                    <li><a href="#"><img src="/images/flag/3.png" alt="img"/></a></li>
+                  </ul>
+                </li>
+              <% end %>
               <li class="faq_nav"><a href="faq.html"><img src="/images/icons/8.png" alt="img"/></a></li>
               <% if current_user %>
                 <li>
@@ -89,11 +91,11 @@
               <% else %>
                 <li><button class="signin_btn" type="button" onclick="window.location.href='login-signup.html'">Sign in</button></li>
                 <li><button class="c_account_btn" type="button" onclick="window.location.href='login-signup.html'">Create account</button></li>
-              <li>
-                <%= link_to cart_items_path do %>
-                  <img src="/images/icons/cart_icon.png" alt="img"/>
-                <% end %>
-              </li>
+                <li>
+                  <%= link_to cart_items_path do %>
+                    <img src="/images/icons/cart_icon.png" alt="img"/>
+                  <% end %>
+                </li>
               <% end %>
             </ul>
           </div>
@@ -333,15 +335,15 @@
 
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
-      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-      (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/5b37ace34ce1104a7d125707/default';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-      })();
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/5b37ace34ce1104a7d125707/default';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+})();
     </script>
     <!--End of Tawk.to Script--> 
 
