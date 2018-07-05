@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_03_105145) do
+ActiveRecord::Schema.define(version: 2018_07_05_213419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(version: 2018_07_03_105145) do
     t.index ["user_id"], name: "index_cart_items_on_user_id"
   end
 
+  create_table "coupons", force: :cascade do |t|
+    t.string "code"
+    t.integer "fixed_amount_cents"
+    t.float "discount_percentage"
+    t.integer "max_usages_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "order_items", force: :cascade do |t|
     t.bigint "order_id"
     t.string "supplier_url"
@@ -72,6 +81,7 @@ ActiveRecord::Schema.define(version: 2018_07_03_105145) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -88,6 +98,7 @@ ActiveRecord::Schema.define(version: 2018_07_03_105145) do
     t.string "shipping_address_line1"
     t.string "shipping_address_line2"
     t.string "phone"
+    t.integer "wallet_balance_cents", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

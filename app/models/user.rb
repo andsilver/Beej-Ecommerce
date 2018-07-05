@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, on: :create
+  monetize :wallet_balance_cents
 
   def avatar_url
     '/images/avatar.jpg'
@@ -36,9 +37,5 @@ class User < ApplicationRecord
     avatar.attach(io: file, filename: 'avatar.jpg')
   rescue StandardError
     # Simply don't break
-  end
-
-  def wallet_balance
-    0
   end
 end

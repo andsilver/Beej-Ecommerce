@@ -37,16 +37,8 @@
             <% end %>
           </td>
           <% status_classes = { delivered: 'order_st_compleate', cancelled: 'order_st_cancelled', pending: 'order_st_process' } %>
-          <td class="<%= status_classes.fetch(order.status) %>">
-            <a href="#">
-              <% if order.status == :delivered %>
-                <i><img src="images/icons/check_o_icon.png" alt="icon"/></i> Delivered
-              <% elsif order.status == :cancelled %>
-                <i><img src="images/icons/cancle_icon.png" alt="icon"/></i> Cancelled
-              <% elsif order.status == :pending %>
-                <i><img src="images/icons/process_icon.png" alt="icon"/></i> Waiting confirmation
-              <% end %>
-            </a>
+          <td class="<%= status_classes.fetch(order.status){ 'default' } %>">
+            <i><img src="<%= order_status_image_path(order.status) %>" width="30px"/></i><%= order.status.capitalize %>
           </td>
           <td class="order_details">
             <%= button_to order, method: :get do %>

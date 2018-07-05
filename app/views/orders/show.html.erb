@@ -7,94 +7,46 @@
       <div class="order_details_table">
         <table border="0" cellspacing="0" cellpadding="0" align="center">
           <tr class="order_details_table_header">
-            <td>
-              Item
-            </td>
-            <td>
-              Status
-            </td>
-            <td>
-              Quantity
-            </td>
-            <td>
-              Weight
-            </td>
-            <td>
-              Price
-            </td>
+            <td> Item </td>
+            <td> Status </td>
+            <td> Quantity </td>
+            <td> Weight </td>
+            <td> Price </td>
           </tr>
-          <tr class="order_details_table_item">
-            <td class="order_item">
-              <div class="order_item_details">
-                <div class="order_item_details_pic">
-                  <img src="/images/img-12.png" alt="img"/>
+          <% @order.order_items.each do |item| %>
+            <tr class="order_details_table_item">
+              <td class="order_item">
+                <div class="order_item_details">
+                  <div class="order_item_details_pic">
+                    <img src="<%= item.image_url %>" alt="img" width="65px"/>
+                  </div>
+                  <p>
+                  <%= item.title %>
+                  </p>
                 </div>
-                <p>
-                Magnum Men's Response III 8, mens M red with gray 
-                </p>
-              </div>
+              </td>
+              <td class="order_status">
+                <i><img src="<%= order_status_image_path(@order.status) %>" width="30px"/></i><%= @order.status.capitalize %>
+              </td>
+              <td class="order_quantity">
+                <%= item.quantity %>
+              </td>
+              <td class="order_weight">
+                <% if item.item_weight %>
+                  <%= item.item_weight %> kg
+                <% else %>
+                  --
+                <% end %>
             </td>
-            <td class="order_status">
-              In process
-            </td>
-            <td class="order_quantity">
-              1
-            </td>
-            <td class="order_weight">
-              0.82 kg
-            </td>
-            <td class="order_price">
-              $ 200
-            </td>
-          </tr>
-          <tr class="order_details_table_item">
-            <td class="order_item">
-              <div class="order_item_details">
-                <div class="order_item_details_pic">
-                  <img src="/images/img-12.png" alt="img"/>
-                </div>
-                <p>
-                Magnum Men's Response III 8, mens M red with gray 
-                </p>
-              </div>
-            </td>
-            <td class="order_status">
-              In process
-            </td>
-            <td class="order_quantity">
-              1
-            </td>
-            <td class="order_weight">
-              0.82 kg
-            </td>
-            <td class="order_price">
-              $ 200
-            </td>
-          </tr>
-          <tr class="order_details_table_item">
-            <td class="order_item">
-              <div class="order_item_details">
-                <div class="order_item_details_pic">
-                  <img src="/images/img-12.png" alt="img"/>
-                </div>
-                <p>
-                Magnum Men's Response III 8, mens M red with gray 
-                </p>
-              </div>
-            </td>
-            <td class="order_status">
-              In process
-            </td>
-            <td class="order_quantity">
-              1
-            </td>
-            <td class="order_weight">
-              0.82 kg
-            </td>
-            <td class="order_price">
-              $ 200
-            </td>
-          </tr>
+              <td class="order_price">
+                <% if item.unit_cost %>
+                  <%= number_to_currency item.unit_cost %>
+                <% else %>
+                  --
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
         </table>
       </div>
 
@@ -102,115 +54,113 @@
         <div class="row">
           <div class="col-sm-6">
             <h4>
-              <a href="#">
+              <%= link_to [:orders] do %>
                 <i class="fa fa-angle-left"></i> Back to the list of my orders
-              </a>
+              <% end %>
             </h4>
-            <div class="order_details_content_left">
-              <p>
-              Name: hamza nabulsi
-              </p>
-              <p>
-              Telephone Number: 965332345432
-              </p>
-              <p>
-              Email Address: nabulsi.hamza@gmail.com
-              </p>
-              <p>
-              Shipping Address: amman, mecca st,
-              Amman, Jordan
-              </p>
-              <p>
-              payment Method: By credit card
-              </p>
-              <p>
-              Placed At: 25 April 2018 - 8:14am
-              </p>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="order_details_content_right">
-              <div class="od_content_right_headding">
-                <button class="progress_color">In process</button>
-                <h3> Total Price: $950 <span>(JOD 35.00)</span> </h3>
-                <div class="clearfix"></div>
+            <% if @order.has_checkout_information? %>
+              <div class="order_details_content_left">
+                <p>
+                Name: <%= @order.client_name %>
+                </p>
+                <p>
+                Telephone Number: <%= @order.client_phone %>
+                </p>
+                <p>
+                Email Address: <%= @order.client_email %>
+                </p>
+                <p>
+                Shipping Address: <%= @order.shipping_address %>
+                </p>
               </div>
-              <div class="od_content_right_table">
-                <table border="0" cellspacing="0" cellpadding="0" align="center">
-                  <tr>
-                    <td class="od_table_left">
-                      Items in Cart:
-                    </td>
-                    <td class="od_table_right">
-                      1
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="od_table_left">
-                      Sub-Total:
-                    </td>
-                    <td class="od_table_right">
-                      $ 45.00
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="od_table_left">
-                      Us Shipping and Taxes:
-                    </td>
-                    <td class="od_table_right">
-                      $ 45.00
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="od_table_left">
-                      Total Weight:
-                    </td>
-                    <td class="od_table_right">
-                      0.45 kg
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="od_table_left">
-                      International Shipping:
-                    </td>
-                    <td class="od_table_right">
-                      $ 45.00
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="od_table_left">
-                      Local Customes and Taxes:
-                    </td>
-                    <td class="od_table_right">
-                      $ 45.00
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="od_table_left">
-                      Fees:
-                    </td>
-                    <td class="od_table_right">
-                      $ 45.00
-                    </td>
-                  </tr>
-                </table>
+            <% end %>
+          </div>
+            <div class="col-sm-6">
+              <div class="order_details_content_right">
+                <div class="od_content_right_headding">
+                  <button class="progress_color"><%= @order.status.capitalize %></button>
+                  <h3> Total Price: <%= @order.total_price ? number_to_currency_with_conversion(@order.total_price) : '--' %></h3>
+                  <div class="clearfix"></div>
+                </div>
+          <% if @order.has_checkout_information? %>
+                <div class="od_content_right_table">
+                  <table border="0" cellspacing="0" cellpadding="0" align="center">
+                    <tr>
+                      <td class="od_table_left">
+                        Items in Cart:
+                      </td>
+                      <td class="od_table_right">
+                        <%= @order.items_count %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="od_table_left">
+                        Sub-Total:
+                      </td>
+                      <td class="od_table_right">
+                        <%= number_to_currency(@order.subtotal) %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="od_table_left">
+                        Us Shipping and Taxes:
+                      </td>
+                      <td class="od_table_right">
+                        <%= number_to_currency(@order.us_shipping_and_taxes) %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="od_table_left">
+                        Total Weight:
+                      </td>
+                      <td class="od_table_right">
+                        <%= "#{@order.total_weight} kg" if @order.total_weight %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="od_table_left">
+                        International Shipping:
+                      </td>
+                      <td class="od_table_right">
+                        <%= number_to_currency(@order.international_shipping) %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="od_table_left">
+                        Local Customes and Taxes:
+                      </td>
+                      <td class="od_table_right">
+                        <%= number_to_currency(@order.local_customs_and_taxes) %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="od_table_left">
+                        Fees:
+                      </td>
+                      <td class="od_table_right">
+                        <%= number_to_currency(@order.fees) %>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              <% end %>
               </div>
-
             </div>
-          </div>
         </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="order_d_down_item1">
-              <a href="#"><img src="/images/icons/cross.png" alt="img"/> Cancel Order</a>
+        <% if @order.can_checkout? %>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="order_d_down_item1">
+                <a href="#"><img src="/images/icons/cross.png" alt="img"/> Cancel Order</a>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="order_d_down_item2">
+                <button type="button">Checkout</button>
+              </div>
             </div>
           </div>
-          <div class="col-sm-6">
-            <div class="order_d_down_item2">
-              <button type="button">Checkout</button>
-            </div>
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>

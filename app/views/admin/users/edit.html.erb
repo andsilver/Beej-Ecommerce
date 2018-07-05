@@ -1,0 +1,62 @@
+<%= form_for @user, url: [:admin, @user] do |f| %>
+  <div class="setting_area_headding">
+    <h1>User</h1>
+  </div>
+  <div class="setting_wallet">
+    <h5>Wallet</h5>
+    <p>Available Balance</p>
+    <h1> $<%= f.number_field :wallet_balance, step: :any %> </h1>
+  </div>
+  <div class="setting_area_form">
+    <div class="form-group">
+      <label for="input_name">First and last name</label>
+      <%= f.text_field :name, class: 'form-control', id: 'input_name' %>
+    </div>
+    <div class="form-group">
+      <label for="input_email">Email</label>
+      <%= f.email_field :email, class: 'form-control', id: 'input_email' %>
+    </div>
+    <div class="form-group">
+      <label for="input_phone">Phone number</label>
+      <%= f.text_field :phone, class: 'form-control', placeholder: '+122-99-1123404' %>
+    </div>
+    <div class="form-group">
+      <label for="">Shipping</label>
+      <%= f.text_field :shipping_address_line1, class: 'form-control', placeholder: 'Address Line 1' %>
+      <%= f.text_field :shipping_address_line2, class: 'form-control', placeholder: 'Address Line 2' %>
+    </div>
+    <div class="form_select_area">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <select class="form-control">
+              <option>Amman</option>
+              <option>Amman 2</option>
+              <option>Amman 3</option>
+              <option>Amman 4</option>
+              <option>Amman 5</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <select class="form-control">
+              <option>Jordan</option>
+              <option>Jordan 2</option>
+              <option>Jordan 3</option>
+              <option>Jordan 4</option>
+              <option>Jordan 5</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Change password here:</label>
+      <%= f.password_field :password, class: 'form-control', placeholder: 'New password' %>
+    </div>
+    <div class="setting_form_submit">
+      <button type="submit"> SAVE CHANGES </button>
+    </div>
+  </div>
+<% end %>

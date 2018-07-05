@@ -1,0 +1,44 @@
+<p>
+<%= link_to 'Create new coupon', [:new, :admin, :coupon], class: 'btn btn-primary' %>
+</p>
+<br>
+
+<table class="table table-striped data-table">
+  <thead>
+    <tr>
+      <th>Creation date</th>
+      <th>Code</th>
+      <th>Type</th>
+      <th>Fixed amount</th>
+      <th>Discount percentage</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @coupons.each do |coupon| %>
+      <tr>
+        <td><%= coupon.created_at %></td>
+        <td><%= coupon.code %></td>
+        <td><%= coupon.coupon_type %></td>
+        <td>
+          <% if coupon.fixed_amount %>
+            <%= number_to_currency coupon.fixed_amount %>
+          <% else %>
+            --
+          <% end %>
+        </td>
+        <td>
+          <% if coupon.discount_percentage %>
+            % <%= coupon.discount_percentage %>
+        <% else %>
+          --
+        <% end %>
+        </td>
+        <td>
+          <%= link_to 'View', [:edit, :admin, coupon] %> |
+          <%= link_to 'Delete', [:admin, coupon], method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

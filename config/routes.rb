@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   resources :orders
 
   namespace :admin do
+    root to: redirect('admin/orders')
+    resources :users
     resources :orders
+    resources :coupons
   end
 end

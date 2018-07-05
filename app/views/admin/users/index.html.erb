@@ -1,0 +1,24 @@
+<table class="table table-striped data-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Registration date</th>
+      <th>Wallet balance</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.created_at %></td>
+        <td><%= number_to_currency user.wallet_balance %></td>
+        <td>
+          <%= link_to 'View', [:edit, :admin, user] %>
+      </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

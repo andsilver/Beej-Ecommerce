@@ -1,0 +1,17 @@
+<%= form_for [:admin, @coupon] do |f| %>
+  <div class="form-group">
+    <%= f.label :code %>
+    <%= f.text_field :code %><br>
+  </div>
+  <div class="form-group">
+    <%= f.label :fixed_amount %>
+    <%= f.number_field :fixed_amount, step: :any %>
+  </div>
+  <div class="form-group">
+    <%= f.label :discount_percentage %>
+    <%= f.number_field :discount_percentage, step: :any %>
+  </div>
+  <div class="form-group">
+    <%= f.submit 'Create', class: 'btn btn-primary' %>
+  </div>
+<% end %>
