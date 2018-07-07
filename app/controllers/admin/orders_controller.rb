@@ -36,6 +36,7 @@ class Admin::OrdersController < Admin::ApplicationController
         international_shipping
         lynks_fees
         taxes_and_customs
+        us_shipping_and_taxes
       ]
     )
   end

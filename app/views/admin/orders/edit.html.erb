@@ -8,6 +8,7 @@
       <th>Unit cost</th>
       <th>Weight</th>
       <th>International Shipping</th>
+      <th>US Shipping and taxes</th>
       <th>Lynks Fees</th>
       <th>Taxes and customs</th>
     </tr>
@@ -19,19 +20,22 @@
           <td><%= item.title %></td>
           <td><%= item.instructions %></td>
           <td>
-            <%= item_form.text_field :unit_cost%>
+            <%= item_form.text_field :unit_cost, style: 'width:90px' %>
           </td>
           <td>
-            <%= item_form.text_field :item_weight%>
+            <%= item_form.text_field :item_weight, style: 'width:90px' %>
           </td>
           <td>
-            <%= item_form.text_field :international_shipping %>
+            <%= item_form.text_field :international_shipping, style: 'width:90px' %>
           </td>
           <td>
-            <%= item_form.text_field :lynks_fees %>
+            <%= item_form.text_field :us_shipping_and_taxes, style: 'width:90px' %>
           </td>
           <td>
-            <%= item_form.text_field :taxes_and_customs %>
+            <%= item_form.text_field :lynks_fees, style: 'width:90px' %>
+          </td>
+          <td>
+            <%= item_form.text_field :taxes_and_customs, style: 'width:90px' %>
           </td>
         </tr>
       <% end %>

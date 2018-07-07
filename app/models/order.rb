@@ -42,8 +42,6 @@ class Order < ApplicationRecord
 
   delegate :name, :phone, :email, prefix: :client, to: :user
 
-  def total_price; end
-
   def shipping_address
     user.shipping_address_line1
   end
@@ -61,21 +59,39 @@ class Order < ApplicationRecord
   end
 
   def subtotal
-    item_costs = order_items.map(&:cost)
-    return nil unless item_costs.all?
-
-    item_costs.sum
+    return nil unless order_items.all?(&:complete_information?)
+    order_items.sum(&:unit_cost)
   end
 
-  def us_shipping_and_taxes; end
+  def us_shipping_and_taxes
+    return nil unless order_items.all?(&:complete_information?)
+    order_items.sum(&:us_shipping_and_taxes)
+  end
 
-  def total_weight; end
+  def total_weight
+    return nil unless order_items.all?(&:complete_information?)
+    order_items.sum(&:item_weight)
+  end
 
-  def international_shipping; end
+  def international_shipping
+    return nil unless order_items.all?(&:complete_information?)
+    order_items.sum(&:international_shipping)
+  end
 
-  def local_customs_and_taxes; end
+  def local_customs_and_taxes
+    return nil unless order_items.all?(&:complete_information?)
+    order_items.sum(&:taxes_and_customs)
+  end
 
-  def fees; end
+  def fees
+    return nil unless order_items.all?(&:complete_information?)
+    order_items.sum(&:lynks_fees)
+  end
+
+  def total_price
+    subtotal + us_shipping_and_taxes + international_shipping +
+      local_customs_and_taxes + fees
+  end
 
   private
 
