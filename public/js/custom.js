@@ -23,6 +23,7 @@ $(document).ready(function(){
     var quantity = parseInt(quantity_item.val());
     // If is not undefined
     quantity_item.val(quantity + 1);
+    quantity_item.change();
 
     // Increment
   });
@@ -36,6 +37,7 @@ $(document).ready(function(){
     if(quantity>1){
       quantity_item.val(quantity - 1);
     }
+    quantity_item.change();
   });
 
 });

@@ -42,7 +42,9 @@
                     <img src="images/icons/left_arrow_o.png" alt="img"/>
                   </button>
                 </span>
-                <input type="text" class="quantity" id="quantity" name="quantity" class="form-control input-number" value="<%= cart_item.quantity %>" min="1" max="100">
+                <%= form_with(model: cart_item) do |f| %>
+                  <input type="text" name="cart_item[quantity]" class="quantity form-control input-number" value="<%= cart_item.quantity %>" min="1" max="100" onChange="this.form.submit()">
+                <% end %>
                 <span class="input-group-btn">
                   <button type="button" class="quantity-right-plus btn btn-number" data-type="plus" data-field="">
                     <img src="images/icons/right_arrow_o.png" alt="img"/>
