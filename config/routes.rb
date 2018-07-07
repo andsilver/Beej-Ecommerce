@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'how-it-works.html', to: 'statics#how_it_works'
   get 'terms', to: 'statics#terms'
   get 'privacy.html', to: 'statics#privacy'
+  get 'can_i_buy.html', to: 'statics#can_i_buy'
   get 'login-signup.html', to: 'users#new', as: :login
   resources :users, only: [:create]
   resources :cart_items, only: %i[index create update destroy] do
