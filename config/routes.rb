@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
   get 'fetch-product', to: 'products#fetch'
 
-  resources :orders
+  resources :orders do
+    post :cancel
+  end
 
   namespace :admin do
     root to: redirect('admin/orders')
