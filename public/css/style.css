@@ -132,6 +132,7 @@ a:hover, a:focus{
 .hero_area{
 	background: url(../images/hero_bg.png) bottom center no-repeat;
 	background-size: cover;
+        background-position-y: -47px;
 }
 .hero_main{
 	
@@ -143,7 +144,7 @@ a:hover, a:focus{
 	padding-bottom: 500px;
 }
 .hero_txt h1{
-	font-size: 48px;
+	font-size: 35px;
 	color: #F89920;
 	font-family: Souses, sans-serif;
 	line-height: 56px;
