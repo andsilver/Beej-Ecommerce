@@ -16,7 +16,7 @@ class Admin::UsersController < Admin::ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to [:admin, :users], notice: 'User sucessfully updated'
+      redirect_to %i[admin users], notice: 'User sucessfully updated'
     else
       flash.now[:error] = @user.errors.full_messages.to_sentence
       render :edit

@@ -27,7 +27,7 @@ class CartItemsController < AuthenticatedController
     end
     flash[:order_number] = order_number
     flash[:order_id] = order_id
-    redirect_to [:thank_you, :cart_items]
+    redirect_to %i[thank_you cart_items]
   end
 
   def create

@@ -12,6 +12,7 @@ class Coupon < ApplicationRecord
   end
 
   private
+
   def validate_either_percentage_discount_either_fixed
     if discount_percentage && fixed_amount
       errors.add(:discount_percentage, 'You cannot select both, fixed amount and percentage discount')

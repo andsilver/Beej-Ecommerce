@@ -20,7 +20,7 @@ class Admin::CouponsController < Admin::ApplicationController
   def create
     @coupon = Coupon.new(coupon_params)
     if @coupon.save
-      redirect_to [:admin, :coupons], notice: 'Coupon succesfuly created'
+      redirect_to %i[admin coupons], notice: 'Coupon succesfuly created'
     else
       flash.now[:error] = @coupon.errors.full_messages.to_sentence
       render :new
@@ -30,7 +30,7 @@ class Admin::CouponsController < Admin::ApplicationController
   def update
     @coupon = Coupon.find(params[:id])
     if @coupon.update(coupon_params)
-      redirect_to [:admin, :coupons], notice: 'Coupon succesfuly updated'
+      redirect_to %i[admin coupons], notice: 'Coupon succesfuly updated'
     else
       flash.now[:error] = @coupon.errors.full_messages.to_sentence
       render :edit
@@ -40,10 +40,11 @@ class Admin::CouponsController < Admin::ApplicationController
   def destroy
     @coupon = Coupon.find(params[:id])
     @coupon.destroy
-    redirect_to [:admin, :coupons], notice: 'Coupon succesfully deleted'
+    redirect_to %i[admin coupons], notice: 'Coupon succesfully deleted'
   end
 
   private
+
   def coupon_params
     params.require(:coupon).permit(
       :code,

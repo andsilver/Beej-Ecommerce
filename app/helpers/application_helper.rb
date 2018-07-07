@@ -11,16 +11,16 @@ module ApplicationHelper
 
   def order_status_image_path(status)
     images = {
-     reviewing: 'reviewing', #missing image
-     reviewed: 'reviewed',
-     confirmed: 'confirmed',
-     received_usa_hub: 'arrived-us',
-     paid: 'paid',
-     out_for_delivery: 'out-for-delivery',
-     delivered: 'delivered', #missing image
-     on_hold: 'on-hold',
-     returned: 'returned',
-     cancelled: 'cancel'
+      reviewing: 'reviewing', # missing image
+      reviewed: 'reviewed',
+      confirmed: 'confirmed',
+      received_usa_hub: 'arrived-us',
+      paid: 'paid',
+      out_for_delivery: 'out-for-delivery',
+      delivered: 'delivered', # missing image
+      on_hold: 'on-hold',
+      returned: 'returned',
+      cancelled: 'cancel'
     }
     '/images/icons/order_status/' + images.fetch(status.to_sym) + '.png'
   end

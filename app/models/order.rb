@@ -4,7 +4,7 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :order_items
   enum status: %i[reviewing reviewed confirmed received_usa_hub paid
-  out_for_delivery delivered on_hold returned cancelled]
+                  out_for_delivery delivered on_hold returned cancelled]
   accepts_nested_attributes_for :order_items
   validate :valid_status_change
 
@@ -36,7 +36,6 @@ class Order < ApplicationRecord
     Order.create!(user: user, order_items: order_items)
   end
 
-
   def number
     id
   end
@@ -44,6 +43,7 @@ class Order < ApplicationRecord
   delegate :name, :phone, :email, prefix: :client, to: :user
 
   def total_price; end
+
   def shipping_address
     user.shipping_address_line1
   end
@@ -67,26 +67,21 @@ class Order < ApplicationRecord
     item_costs.sum
   end
 
-  def us_shipping_and_taxes
-  end
+  def us_shipping_and_taxes; end
 
-  def total_weight
-  end
+  def total_weight; end
 
-  def international_shipping
-  end
+  def international_shipping; end
 
-  def local_customs_and_taxes
-  end
+  def local_customs_and_taxes; end
 
-  def fees
-  end
+  def fees; end
 
   private
-  
+
   def valid_status_change
     return true unless status == 'reviewed'
     return true if order_items.all?(&:ready_to_review?)
-    errors.add(:status, "Data of all items should be completed before review")
+    errors.add(:status, 'Data of all items should be completed before review')
   end
 end
