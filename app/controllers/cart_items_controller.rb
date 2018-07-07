@@ -2,7 +2,7 @@
 
 class CartItemsController < AuthenticatedController
   def index
-    @cart_items = cart_items
+    @cart_items = cart_items.order(:created_at)
   end
 
   def thank_you

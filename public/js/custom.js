@@ -36,8 +36,8 @@ $(document).ready(function(){
     // If is not undefined
     if(quantity>1){
       quantity_item.val(quantity - 1);
+      quantity_item.change();
     }
-    quantity_item.change();
   });
 
 });
