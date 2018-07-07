@@ -5,6 +5,8 @@ class Order < ApplicationRecord
   has_many :order_items
   enum status: %i[reviewing reviewed confirmed received_usa_hub paid
   out_for_delivery delivered on_hold returned cancelled]
+  accepts_nested_attributes_for :order_items
+  validate :valid_status_change
 
   def has_checkout_information?
     status != 'reviewing'
@@ -78,5 +80,13 @@ class Order < ApplicationRecord
   end
 
   def fees
+  end
+
+  private
+  
+  def valid_status_change
+    return true unless status == 'reviewed'
+    return true if order_items.all?(&:ready_to_review?)
+    errors.add(:status, "Data of all items should be completed before review")
   end
 end

@@ -16,4 +16,10 @@ class OrderItem < ApplicationRecord
     return nil unless unit_cost_cents && quantity
     unit_cost_cents * quantity
   end
+
+  def ready_to_review?
+    %i[unit_cost item_weight international_shipping lynks_fees taxes_and_customs].all? do |f|
+      send(f).present?
+    end
+  end
 end

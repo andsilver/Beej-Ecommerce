@@ -1,0 +1,46 @@
+<%= form_for [:admin, @order] do |f| %>
+  <table class="table table-striped">
+    <tr>
+      <th>Image</th>
+      <th>Link</th>
+      <th>Title</th>
+      <th>Instructions</th>
+      <th>Unit cost</th>
+      <th>Weight</th>
+      <th>International Shipping</th>
+      <th>Lynks Fees</th>
+      <th>Taxes and customs</th>
+    </tr>
+      <%= f.fields_for :order_items do |item_form| %>
+        <% item = item_form.object %>
+        <tr>
+          <td><img src="<%= item.image_url %>" width="100px"></td>
+          <td><%= link_to 'Link', item.supplier_url %></td>
+          <td><%= item.title %></td>
+          <td><%= item.instructions %></td>
+          <td>
+            <%= item_form.text_field :unit_cost%>
+          </td>
+          <td>
+            <%= item_form.text_field :item_weight%>
+          </td>
+          <td>
+            <%= item_form.text_field :international_shipping %>
+          </td>
+          <td>
+            <%= item_form.text_field :lynks_fees %>
+          </td>
+          <td>
+            <%= item_form.text_field :taxes_and_customs %>
+          </td>
+        </tr>
+      <% end %>
+  </table>
+<table class="table table-striped">
+  <tr>
+    <th>Order Status</th>
+    <td><%= f.select :status, @order.class.statuses.keys %></td>
+  </tr>
+</table>
+<%= f.submit "Update", class: 'btn btn-primary' %>
+<% end %>
