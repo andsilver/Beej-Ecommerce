@@ -243,7 +243,10 @@
 
     <!-- Custom Javascript -->
     <script src="/js/custom.js"></script>
-    <%= javascript_include_tag 'application' %>
+    <script src="/js/product-fetcher.js"></script>
+    <script src="/js/rails-ujs.js"></script>
+
+    <%#= javascript_include_tag 'application' %>
     <%= content_for :js %>
 
     <!--Start of Tawk.to Script-->
