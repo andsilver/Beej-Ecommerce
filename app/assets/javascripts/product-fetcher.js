@@ -1,5 +1,6 @@
 $(document).ready(function(){
   $('[data-product-fetcher').click(function(){
+    $('#modal_error').hide();
     $('#modal_results').hide();
     $('#modal_spinner').show();
 
@@ -19,7 +20,11 @@ $(document).ready(function(){
         $('#modal_spinner').hide();
         $('#modal_results').show();
       },
-      error: function(){ console.log('Error: product not found')}
+      error: function(){ 
+        $('#modal_spinner').hide();
+        $('#modal_error').show();
+        console.log('Error: product not found')
+      }
     });
   });
 });

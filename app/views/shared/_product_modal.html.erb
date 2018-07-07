@@ -7,6 +7,12 @@
             <img src="/images/loading.gif" />
           </center>
         </div>
+        <div id="modal_error" style="display:none">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h2 style="color: orange; text-align:center; height: 100px; line-height: 100px">
+            We couldn't find the product, try again, please
+          </h2>
+        </div>
         <div id="modal_results" style="display:none">
           <%= form_for @cart_item || CartItem.new do |cf| %>
             <div class="home_modal2">
