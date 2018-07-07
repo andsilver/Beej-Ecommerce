@@ -138,7 +138,7 @@ $(document).ready(function(){
     fees = fees.toFixed(2);
     total = total.toFixed(2);
     jod = jod.toFixed(2);
-    var total_text = total + '<span>('+ jod + ')</span>';
+    var total_text = total + ' <span>(JOD '+ jod + ')</span>';
 
 
 
