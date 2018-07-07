@@ -33,6 +33,7 @@ class Admin::UsersController < Admin::ApplicationController
       :phone,
       :shipping_address_line1,
       :shipping_address_line1,
+      :shipping_city,
       :password
     )
   end

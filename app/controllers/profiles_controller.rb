@@ -24,6 +24,7 @@ class ProfilesController < AuthenticatedController
       :password,
       :shipping_address_line1,
       :shipping_address_line2,
+      :shipping_city,
       :phone
     )
   end
