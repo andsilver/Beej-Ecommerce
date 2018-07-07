@@ -41,6 +41,15 @@ class CartItemsController < AuthenticatedController
     end
   end
 
+  def update
+    @cart_item = cart_items.find(params[:id])
+    if @cart_item.update(cart_item_params)
+      redirect_to :cart_items, notice: 'Updated'
+    else
+      redirect_to :cart_items, error: @cart_item.errors.full_messages.to_sentence
+    end
+  end
+
   def destroy
     cart_items.find(params[:id]).destroy
     redirect_to :cart_items, notice: 'Product removed from cart'

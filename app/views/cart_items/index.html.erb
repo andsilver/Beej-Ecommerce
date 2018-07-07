@@ -65,7 +65,7 @@
                   <% end %>
                 </li>
                 <li>
-                  <a href="#">
+                  <a data-toggle="modal" data-target="#product_modal" data-edit_product="true" data-edit_url="<%= cart_item_path(cart_item) %>">
                     <i class="fa fa-pencil"></i>
                   </a>
                 </li>
@@ -88,3 +88,4 @@
   </div>
 </section>
 
+<%= render('shared/product_modal') %>
