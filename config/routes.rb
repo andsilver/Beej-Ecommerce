@@ -28,7 +28,10 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: redirect('admin/orders')
     resources :users
-    resources :orders, only: %i[index edit update]
+    resources :orders, only: %i[index edit update] do
+      get :review
+      patch :review, to: 'orders#process_review'
+    end
     resources :coupons
   end
 end

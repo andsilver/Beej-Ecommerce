@@ -27,5 +27,9 @@ Naming/MemoizedInstanceVariableName:
 
 Naming/AccessorMethodName:
   Enabled: false
+
 Naming/PredicateName:
+  Enabled: false
+
+Metrics/BlockLength:
   Enabled: false
