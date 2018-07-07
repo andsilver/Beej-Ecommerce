@@ -19,13 +19,10 @@ $(document).ready(function(){
     // Stop acting like a button
     e.preventDefault();
     // Get the field name
-    quantity_items = $(this).parents('.checkout1_table_content').children('.quantity');
-    console.log(quantity_items);
-    var quantity = parseInt($('#quantity').val());
-
+    var quantity_item = $(this).parents('.checkout1_table_content').find('.quantity');
+    var quantity = parseInt(quantity_item.val());
     // If is not undefined
-
-    $('#quantity').val(quantity + 1);
+    quantity_item.val(quantity + 1);
 
     // Increment
   });
@@ -33,14 +30,11 @@ $(document).ready(function(){
   $('.quantity-left-minus').click(function(e){
     // Stop acting like a button
     e.preventDefault();
-    // Get the field name
-    var quantity = parseInt($('#quantity').val());
-
+    var quantity_item = $(this).parents('.checkout1_table_content').find('.quantity');
+    var quantity = parseInt(quantity_item.val());
     // If is not undefined
-
-    // Increment
-    if(quantity>0){
-      $('#quantity').val(quantity - 1);
+    if(quantity>1){
+      quantity_item.val(quantity - 1);
     }
   });
 
