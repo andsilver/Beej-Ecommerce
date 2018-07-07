@@ -158,7 +158,9 @@
             </div>
             <div class="col-sm-6">
               <div class="order_d_down_item2">
-                <button type="button">Checkout</button>
+                <%= link_to [@order, :checkout] do %>
+                  <button type="button">Checkout</button>
+                <% end %>
               </div>
             </div>
           </div>

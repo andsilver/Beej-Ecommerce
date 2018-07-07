@@ -1,0 +1,20 @@
+<section class="confirmation_area">
+  <div class="confirmation_area_main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="confirmation_item">
+            <img src="/images/icons/check.png" alt="img"/>
+            <h1>Thank You!</h1>
+            <p>
+            Your Order <%= link_to "No. #{@order.number}", @order %> is now confirmed! 
+            <br/>
+            A courier will reach you during the next 24 hours to collect the cash from your doorstep
+            </p>
+            <button type="button">back to main page</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

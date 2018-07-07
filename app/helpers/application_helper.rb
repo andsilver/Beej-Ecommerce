@@ -25,6 +25,10 @@ module ApplicationHelper
     '/images/icons/order_status/' + images.fetch(status.to_sym) + '.png'
   end
 
+  def conversion(number)
+    number_to_currency(number * 0.73, unit: 'JOD ')
+  end
+
   def number_to_currency_with_conversion(number)
     return unless number
     (number_to_currency(number) + "(JOD #{number * 0.73})").html_safe

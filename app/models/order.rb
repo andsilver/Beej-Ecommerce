@@ -42,6 +42,15 @@ class Order < ApplicationRecord
 
   delegate :name, :phone, :email, prefix: :client, to: :user
 
+  def valid_for_checkout?
+    errors.add(:shipping_full_name, :blank) unless shipping_full_name.present?
+    errors.add(:shipping_address_line1, :blank) unless shipping_address_line1.present?
+    errors.add(:shipping_city, :blank) unless shipping_city.present?
+    return false if errors.any?
+
+    true
+  end
+
   def shipping_address
     user.shipping_address_line1
   end

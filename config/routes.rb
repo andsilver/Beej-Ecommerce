@@ -20,12 +20,15 @@ Rails.application.routes.draw do
 
   resources :orders do
     post :cancel
+    get :checkout
+    patch :checkout, to: 'orders#process_checkout'
+    get :confirmation
   end
 
   namespace :admin do
     root to: redirect('admin/orders')
     resources :users
-    resources :orders
+    resources :orders, only: %i[index edit update]
     resources :coupons
   end
 end
