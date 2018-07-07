@@ -105,3 +105,50 @@ $(document).ready(function(){
     }
   });
 });
+
+$(document).ready(function(){
+  $('#calculate-button').click(function(){
+
+    var price = parseFloat( $('#price').val() );
+    price = isNaN(price) ? 0 : price;
+    var us_shipping_cost = parseFloat( $('#cost').val() );
+    us_shipping_cost = isNaN(us_shipping_cost) ? 0 : us_shipping_cost;
+    var quantity = parseInt( $('#quantity').val() );
+    quantity = isNaN(quantity) ? 0 : quantity;
+    var item_weight = parseFloat( $('#weight').val() );
+    item_weight = isNaN(item_weight) ? 0 : item_weight;
+    var items_cost = price * quantity;
+    var customs_and_taxes = 0;
+    if(items_cost < 60){
+      customs_and_taxes = 0;
+    } else if(items_cost < 150){
+      customs_and_taxes = items_cost * 0.16;
+    }
+    else{
+      customs_and_taxes = items_cost * 0.25;
+    }
+
+    var international_shipping_cost = Math.ceil(item_weight * quantity / 0.25)*6.5;
+    if(international_shipping_cost > 0){ international_shipping_cost = international_shipping_cost + 2.5; }
+
+    var subtotal = items_cost + us_shipping_cost + international_shipping_cost;
+    var fees = subtotal * 0.15;
+    var total = subtotal + fees + customs_and_taxes;
+    var jod = total * 0.73;
+    fees = fees.toFixed(2);
+    total = total.toFixed(2);
+    jod = jod.toFixed(2);
+    var total_text = total + '<span>('+ jod + ')</span>';
+
+
+
+    $('#calculated_item_price').text('$ '+ price);
+    $('#calculated_quantity').text(quantity);
+    $('#calculated_us_shipping_cost').text('$ '+ us_shipping_cost);
+    $('#calculated_item_weight').text(item_weight + ' KG');
+    $('#calculated_customs_and_taxes').text('$ '+ customs_and_taxes);
+    $('#calculated_international_shipping').text('$ '+international_shipping_cost);
+    $('#calculated_fees').text('$ '+ fees);
+    $('#calculated_total_price').html('$ '+ total_text);
+  });
+});

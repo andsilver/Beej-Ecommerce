@@ -88,7 +88,6 @@
   </div>
 </section>
 
-
 <!--price calculator  Area Start -->
 
 <section class="price_calculator_area" id="calculator">
@@ -147,7 +146,7 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="price_calculator_btn">
-              <button type="button" data-toggle="modal" data-target="#calculator_modal">Calculate</button>
+              <button type="button" id="calculate-button" data-toggle="modal" data-target="#calculator_modal">Calculate</button>
             </div>
           </div>
         </div>
@@ -305,4 +304,5 @@
   </div>
 </section>
 
+<%= render('shared/calculator_modal') %>
 <%= render('shared/product_modal') %>
