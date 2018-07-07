@@ -46,49 +46,46 @@ class Order < ApplicationRecord
     user.shipping_address_line1
   end
 
-  def payment_method
-    'By credit card'
-  end
-
-  def checkout_at
-    '25 April 2018 - 8:14am'
-  end
-
   def items_count
     order_items.count
   end
 
   def subtotal
-    return nil unless order_items.all?(&:complete_information?)
+    return nil unless prices_ready?
     order_items.sum(&:unit_cost)
   end
 
   def us_shipping_and_taxes
-    return nil unless order_items.all?(&:complete_information?)
+    return nil unless prices_ready?
     order_items.sum(&:us_shipping_and_taxes)
   end
 
   def total_weight
-    return nil unless order_items.all?(&:complete_information?)
+    return nil unless prices_ready?
     order_items.sum(&:item_weight)
   end
 
   def international_shipping
-    return nil unless order_items.all?(&:complete_information?)
+    return nil unless prices_ready?
     order_items.sum(&:international_shipping)
   end
 
   def local_customs_and_taxes
-    return nil unless order_items.all?(&:complete_information?)
+    return nil unless prices_ready?
     order_items.sum(&:taxes_and_customs)
   end
 
   def fees
-    return nil unless order_items.all?(&:complete_information?)
+    return nil unless prices_ready?
     order_items.sum(&:lynks_fees)
   end
 
+  def prices_ready?
+    order_items.all?(&:complete_information?)
+  end
+
   def total_price
+    return nil unless prices_ready?
     subtotal + us_shipping_and_taxes + international_shipping +
       local_customs_and_taxes + fees
   end

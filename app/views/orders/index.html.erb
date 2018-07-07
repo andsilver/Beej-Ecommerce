@@ -33,7 +33,7 @@
           </td>
           <td class="order_total">
             <% if order.total_price %>
-              <%= number_to_currency(order.total_price) %> (JOD ??)
+              <%= number_to_currency_with_conversion(order.total_price) %>
             <% end %>
           </td>
           <% status_classes = { delivered: 'order_st_compleate', cancelled: 'order_st_cancelled', pending: 'order_st_process' } %>
