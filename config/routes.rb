@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   get 'faq.html', to: 'statics#faq'
   get 'how-it-works.html', to: 'statics#how_it_works'
+  get 'about-us.html', to: 'statics#about_us'
   get 'terms', to: 'statics#terms'
   get 'privacy.html', to: 'statics#privacy'
   get 'can_i_buy.html', to: 'statics#can_i_buy'
