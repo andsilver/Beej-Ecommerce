@@ -5,8 +5,8 @@ class Admin::UsersController < Admin::ApplicationController
     @users = User.all
   end
 
-  def show
-    @user = User.find(params[:id])
+  def new
+    @user = User.new
   end
 
   def edit
@@ -23,6 +23,16 @@ class Admin::UsersController < Admin::ApplicationController
     end
   end
 
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to %i[admin users], notice: 'User successfully created'
+    else
+      flash.now[:error] = @user.errors.full_messages.to_sentence
+      render :new
+    end
+  end
+
   private
 
   def user_params
@@ -34,7 +44,8 @@ class Admin::UsersController < Admin::ApplicationController
       :shipping_address_line1,
       :shipping_address_line1,
       :shipping_city,
-      :password
+      :password,
+      :admin
     )
   end
 end

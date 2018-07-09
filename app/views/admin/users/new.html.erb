@@ -1,0 +1,51 @@
+<br>
+<%= form_for [:admin, @user] do |f| %>
+  <div class="setting_area_form">
+    <div class="form-group">
+      <label for="input_name">First and last name</label>
+      <%= f.text_field :name, class: 'form-control', id: 'input_name' %>
+    </div>
+    <div class="form-group">
+      <label for="input_email">Email</label>
+      <%= f.email_field :email, class: 'form-control', id: 'input_email' %>
+    </div>
+    <div class="form-group">
+      <label for="input_admin">Admin?</label>
+      <%= f.check_box :admin, class: 'form-control', id: 'input_admin' %>
+    </div>
+    <div class="form-group">
+      <label for="input_phone">Phone number</label>
+      <%= f.text_field :phone, class: 'form-control', placeholder: '+122-99-1123404' %>
+    </div>
+    <div class="form-group">
+      <label for="">Shipping</label>
+      <%= f.text_field :shipping_address_line1, class: 'form-control', placeholder: 'Address Line 1' %>
+      <%= f.text_field :shipping_address_line2, class: 'form-control', placeholder: 'Address Line 2' %>
+    </div>
+    <div class="form_select_area">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.select :shipping_city, City.all, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <select class="form-control">
+              <%= Country.all.each do |country| %>
+                <option><%= country %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Change password here:</label>
+      <%= f.password_field :password, class: 'form-control', placeholder: 'New password' %>
+    </div>
+    <div class="setting_form_submit">
+      <button type="submit"> SAVE CHANGES </button>
+    </div>
+  </div>
+<% end %>
