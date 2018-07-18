@@ -9,7 +9,9 @@ class Order < ApplicationRecord
   validate :valid_status_change
 
   def total_price_with_discounts
-    total_price - coupon_discount
+    return total_price - coupon_discount if coupon_discount
+
+    total_price
   end
 
   def apply_coupon(code)
