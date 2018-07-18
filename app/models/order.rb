@@ -40,7 +40,7 @@ class Order < ApplicationRecord
     id
   end
 
-  delegate :name, :phone, :email, prefix: :client, to: :user
+  delegate :name, :phone, :email, prefix: :client, to: :user, allow_nil: true
 
   def valid_for_checkout?
     errors.add(:shipping_full_name, :blank) unless shipping_full_name.present?
