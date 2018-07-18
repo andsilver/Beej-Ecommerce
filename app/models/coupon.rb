@@ -6,6 +6,14 @@ class Coupon < ApplicationRecord
   validates :discount_percentage, presence: true, unless: :fixed_amount
   validate :validate_either_percentage_discount_either_fixed
 
+  def compute_discount(total)
+    discount = fixed_amount if fixed_amount
+    discount = total * discount_percentage / 100 if discount_percentage
+
+    return total if discount > total
+    discount
+  end
+
   def coupon_type
     return 'Fixed Amount' if fixed_amount
     return 'Percentage discount' if discount_percentage

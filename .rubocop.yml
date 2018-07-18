@@ -33,3 +33,5 @@ Naming/PredicateName:
 
 Metrics/BlockLength:
   Enabled: false
+Metrics/ClassLength:
+  Enabled: false

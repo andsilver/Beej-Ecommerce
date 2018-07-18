@@ -8,6 +8,27 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :order_items
   validate :valid_status_change
 
+  def total_price_with_discounts
+    total_price - coupon_discount
+  end
+
+  def apply_coupon(code)
+    coupon = Coupon.find_by(code: code)
+    unless coupon
+      errors.add(:coupon_code_to_apply, 'Invalid')
+      return false
+    end
+    self.coupon_code_to_apply = code
+    save
+  end
+
+  def coupon_discount
+    return nil unless coupon_code_to_apply
+    coupon = Coupon.find_by(code: coupon_code_to_apply)
+    return nil unless coupon
+    coupon.compute_discount(total_price)
+  end
+
   def has_checkout_information?
     status != 'reviewing'
   end

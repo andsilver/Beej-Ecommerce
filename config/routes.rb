@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     post :cancel
     get :checkout
     patch :checkout, to: 'orders#process_checkout'
+    patch :apply_coupon, to: 'orders#apply_coupon'
     get :confirmation
   end
 

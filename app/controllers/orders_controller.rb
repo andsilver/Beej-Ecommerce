@@ -19,9 +19,21 @@ class OrdersController < AuthenticatedController
     (redirect_to(:orders, notice: 'Order not ready for checkout') && return) unless @order.status == 'reviewed'
   end
 
+  def apply_coupon
+    @order = current_user.orders.find(params[:order_id])
+    coupon_params = params.require(:order).permit(:coupon_code_to_apply)
+    @order.apply_coupon(coupon_params[:coupon_code_to_apply])
+    @order.assign_attributes(checkout_params)
+    flash.now[:error] = @order.errors.full_messages.to_sentence if @order.errors.count.positive?
+    render :checkout
+  end
+
   def process_checkout
     @order = current_user.orders.find(params[:order_id])
     (redirect_to(:orders, error: 'Order not ready for checkout') && return) unless @order.status == 'reviewed'
+
+    coupon_params = params.require(:order).permit(:coupon_code_to_apply)
+    @order.apply_coupon(coupon_params[:coupon_code_to_apply]) if coupon_params
 
     @order.assign_attributes(checkout_params)
     if @order.valid_for_checkout?

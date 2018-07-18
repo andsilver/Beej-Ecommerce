@@ -79,7 +79,7 @@
               <div class="order_details_content_right">
                 <div class="od_content_right_headding">
                   <button class="progress_color"><%= @order.status.capitalize %></button>
-                  <h3> Total Price: <%= @order.total_price ? number_to_currency_with_conversion(@order.total_price) : '--' %></h3>
+                  <h3> Total Price: <%= @order.total_price_with_discounts ? number_to_currency_with_conversion(@order.total_price_with_discounts) : '--' %></h3>
                   <div class="clearfix"></div>
                 </div>
           <% if @order.has_checkout_information? %>
@@ -141,6 +141,16 @@
                         <%= number_to_currency(@order.fees) %>
                       </td>
                     </tr>
+                    <% if @order.coupon_discount %>
+                      <tr>
+                        <td class="od_table_left">
+                          Coupon discount:
+                        </td>
+                        <td class="od_table_right">
+                          <%= number_to_currency(- @order.coupon_discount) %>
+                        </td>
+                      </tr>
+                    <% end %>
                   </table>
                 </div>
               <% end %>
